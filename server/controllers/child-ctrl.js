@@ -99,7 +99,7 @@ getChildren = async (req, res) => {
                 .json({ success: false, error: `Child not found` })
         }
         return res.status(200).json({ success: true, data: children })
-    }).catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 getChildById = async (req, res) => {

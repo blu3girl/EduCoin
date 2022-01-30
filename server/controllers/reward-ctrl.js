@@ -60,7 +60,7 @@ getRewards = async (req, res) => {
                 .json({ success: false, error: `Reward not found` })
         }
         return res.status(200).json({ success: true, data: rewards })
-    }).catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 getRewardById = async (req, res) => {

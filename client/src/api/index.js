@@ -8,12 +8,24 @@ export const insertChild = payload => api.post(`/child`, payload)
 export const deleteChildById = id => api.delete(`/child/${id}`)
 export const getChildById = id => api.get(`/child/${id}`)
 export const getAllChildren = () => api.get(`/children`)
+export const insertTask = payload => api.post('/task', payload)
+export const insertReward = payload => api.post('/reward', payload)
+export const getAllTask = () => api.get('/tasks')
+export const getAllRewards = () => api.get('/rewards')
+export const deleteTaskById = id => api.delete(`/task/${id}`)
+export const deleteRewardById = id => api.delete(`/reward/${id}`)
 
 const apis = {
     insertChild,
     deleteChildById,
     getChildById,
-    getAllChildren
+    getAllChildren,
+    insertTask,
+    insertReward,
+    getAllTask,
+    getAllRewards,
+    deleteRewardById,
+    deleteTaskById,
 }
 
 export default apis

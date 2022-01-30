@@ -118,39 +118,41 @@ class Invest extends Component {
         const current_shares = this.state.current_shares
         const stocks_render = [];
 
+        if(stocks[0])
+            console.log('DAWJDNJKAWD',stocks[0].name)
         for (let i = 0; i < stocks.length; ++i) {
             let icon_render = <FontAwesomeIcon icon={faApple} />
-            if (stocks[i].name == "Apple") {
+            if (stocks[i].name === "Apple") {
                 icon_render = <FontAwesomeIcon icon={faApple} />
             }
-            else if (stocks[i].name == "Google") {
+            else if (stocks[i].name === "Google") {
                 icon_render = <FontAwesomeIcon icon={faGoogle} />
             }
-            else if (stocks[i].name == "Amazon") {
+            else if (stocks[i].name === "Amazon") {
                 icon_render = <FontAwesomeIcon icon={faAmazon} />
             }
-            else if (stocks[i].name == "Facebook") {
+            else if (stocks[i].name === "Facebook") {
                 icon_render = <FontAwesomeIcon icon={faFacebook} />
             }
-            else if (stocks[i].name == "Tesla") {
+            else if (stocks[i].name === "Tesla") {
                 icon_render = <img src={tesla} alt="logo"/>
             }
-            else if (stocks[i].name == "GameStop") {
+            else if (stocks[i].name === "GameStop") {
                 icon_render = <p>GME</p>
             }
-            else if (stocks[i].name == "Coca-Cola") {
+            else if (stocks[i].name === "Coca-Cola") {
                 icon_render = <img src={cocacola} alt="logo"/>
             }
             else if (stocks[i].name == "McDonald's") {
                 icon_render = <img src={mcdonalds} alt="logo"/>
             }
-            else if (stocks[i].name == "Nike") {
+            else if (stocks[i].name === "Nike") {
                 icon_render = <img src={nike} alt="logo"/>
             }
-            else if (stocks[i].name == "Disney") {
+            else if (stocks[i].name === "Disney") {
                 icon_render = <img src={disney} alt="logo"/>
             }
-            else if (stocks[i].name == "Netflix") {
+            else if (stocks[i].name === "Netflix") {
                 icon_render = <img src={netflix} alt="logo"/>
             }
             stocks_render.push(

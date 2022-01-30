@@ -74,34 +74,37 @@ class Invest extends Component {
         const current_stock = this.state.current_stock
         const current_shares = this.state.current_shares
         const stocks_render = [];
+        // stocks=current_stock;
         let chart = <GOOGLchart />
 
+        if(stocks[0])
+            console.log('DAWJDNJKAWD',stocks[0].name)
         for (let i = 0; i < stocks.length; ++i) {
             let icon_render = <FontAwesomeIcon icon={faApple} />
-            if (stocks[i].name == "Apple") {
+            if (stocks[i].name === "Apple") {
                 icon_render = <FontAwesomeIcon icon={faApple} />
                 chart = <APPLchart />
             }
-            else if (stocks[i].name == "Google") {
+            else if (stocks[i].name === "Google") {
                 icon_render = <FontAwesomeIcon icon={faGoogle} />
                 chart = <GOOGLchart />
             }
-            else if (stocks[i].name == "Amazon") {
+            else if (stocks[i].name === "Amazon") {
                 icon_render = <FontAwesomeIcon icon={faAmazon} />
             }
-            else if (stocks[i].name == "Facebook") {
+            else if (stocks[i].name === "Facebook") {
                 icon_render = <FontAwesomeIcon icon={faFacebook} />
                 chart = <FBchart />
             }
-            else if (stocks[i].name == "Tesla") {
+            else if (stocks[i].name === "Tesla") {
                 icon_render = <img src={tesla} alt="logo"/>
                 chart = <TSLAchart />
             }
-            else if (stocks[i].name == "GameStop") {
+            else if (stocks[i].name === "GameStop") {
                 icon_render = <p>GME</p>
                 chart = <GMEchart />
             }
-            else if (stocks[i].name == "Coca-Cola") {
+            else if (stocks[i].name === "Coca-Cola") {
                 icon_render = <img src={cocacola} alt="logo"/>
                 chart = <KOchart />
             }
@@ -109,15 +112,15 @@ class Invest extends Component {
                 icon_render = <img src={mcdonalds} alt="logo"/>
                 chart = <MCDchart />
             }
-            else if (stocks[i].name == "Nike") {
+            else if (stocks[i].name === "Nike") {
                 icon_render = <img src={nike} alt="logo"/>
                 chart = <NKEchart />
             }
-            else if (stocks[i].name == "Disney") {
+            else if (stocks[i].name === "Disney") {
                 icon_render = <img src={disney} alt="logo"/>
                 chart = <DISchart />
             }
-            else if (stocks[i].name == "Netflix") {
+            else if (stocks[i].name === "Netflix") {
                 icon_render = <img src={netflix} alt="logo"/>
                 chart = <NFLXchart />
             }

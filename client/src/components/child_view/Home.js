@@ -29,7 +29,7 @@ class Home extends Component {
                     <div className="profile">
                         <img src={Lion} />
                         <h4>Good morning</h4>
-                        <h4 style={{ color: "var(--main3)" }}> {child.name}</h4>
+                        <h4 style={{ color: "var(--main3)" }}>☀️{child.name}☀️</h4>
 
                         <div className="profile-card">
                             <h4>Your Progress</h4>

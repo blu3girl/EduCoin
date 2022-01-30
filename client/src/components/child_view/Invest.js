@@ -90,6 +90,11 @@ class Invest extends Component {
 
             apis.newStockTransaction({"child": "61f621d3bf24162200bfb993", "shares": this.state.transactionCoins/price, "stock": ticker, "price": price, "action": "bought"})
                 .catch((err) => console.log(err));
+            apis.updateChildCoins({"id": "61f621d3bf24162200bfb993", "coins": -(this.state.transactionCoins)})
+                .catch((err) => console.log(err));
+            await apis.getChildById("61f621d3bf24162200bfb993")
+                .then((res) => this.setState({coins: res.data.data.coins}))
+                .catch((err) => console.log(err))
             window.location.reload()
         };
         const handleSell = async (e) => {
@@ -100,6 +105,11 @@ class Invest extends Component {
 
             apis.newStockTransaction({"child": "61f621d3bf24162200bfb993", "shares": this.state.transactionCoins/price, "stock": ticker, "price": price, "action": "sold"})
                 .catch((err) => console.log(err));
+            apis.updateChildCoins({"id": "61f621d3bf24162200bfb993", "coins": this.state.transactionCoins})
+                .catch((err) => console.log(err));
+            await apis.getChildById("61f621d3bf24162200bfb993")
+                .then((res) => this.setState({coins: res.data.data.coins}))
+                .catch((err) => console.log(err))
             window.location.reload()
         };
 

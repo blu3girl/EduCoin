@@ -13,6 +13,7 @@
     "axios": "^0.25.0",
     "finnhub": "^1.2.10",
     "fs": "^0.0.1-security",
+    "qrcode": "^1.5.0",
     "querystring": "^0.2.1",
     "react": "^17.0.2",
     "react-charts": "^2.0.0-beta.7",

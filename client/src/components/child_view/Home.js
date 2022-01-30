@@ -1,7 +1,9 @@
 import "../../stylesheets/child/home.css";
 import { ArrowUp, Coin, Lion, Stock, TaskList, Gift, Investment } from "../svg";
 import { Link } from "react-router-dom";
-import { getChildById } from '../../api'
+import apis from '../../api'
+import axios from 'axios'
+
 
 const { Component } = require("react");
 
@@ -9,11 +11,18 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            child: getChildById("61f621d3bf24162200bfb993")
+            child: {}
         }
-        console.log(this.state.child)
     }
+
+    componentDidMount = async () => {
+        await apis.getChildById("61f621d3bf24162200bfb993")
+                  .then((res) => this.setState({child: res.data.data}))
+                  .catch((err) => console.log(err))
+    }
+
     render() {
+        const child = this.state.child.name
         return (
             <div className="main-container">
                 <h4 className="title">EduCoin</h4>
@@ -21,7 +30,7 @@ class Home extends Component {
                     <div className="profile">
                         <img src={Lion} />
                         <h4>Good morning</h4>
-                        <h4 style={{ color: "var(--main3)" }}>{} </h4>
+                        <h4 style={{ color: "var(--main3)" }}> {child}</h4>
 
                         <div className="profile-card">
                             <h4>Your Progress</h4>

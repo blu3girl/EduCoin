@@ -19,6 +19,8 @@ class Rewards extends Component {
             rewards: [],
             child: {}
         }
+
+        this.handleRewardClick = this.handleRewardClick.bind(this)
     }
 
     componentDidMount = async () => {
@@ -31,12 +33,14 @@ class Rewards extends Component {
                   .catch((err) => console.log(err))
     }
 
-    handleRewardClick = async (rewardsID) => {
-        console.log(rewardsID)
+    handleRewardClick = async (rewardscoins) => {
         // event.preventDefault()
-        // await apis.createRewardRequest({reward: rewardsID, child: this.state.child._id, status: "completed"})
-        //           .then((res) => console.log("clicked"))
-        //           .catch((err) => console.log(err))
+        this.state.child.coins -= rewardscoins;
+        // await apis.updateChildCoins(this.state.child)
+        //     .then((res) => console.log(res))
+        //     .catch((err) => console.log(err))
+
+        console.log(this.state.child)
     }
     
     render() {
@@ -46,7 +50,7 @@ class Rewards extends Component {
 
         for (let i = 0; i < rewards.length; ++i) {
             stuff.push(
-                <div key={i} className="reward-container" onClick={this.handleRewardClick(rewards[i]._id)}>
+                <div key={i} className="reward-container" onClick={() => this.handleRewardClick(rewards[i].coins)}>
                     <h4 id={"content"}>{rewards[i].name}</h4>
                     <div className="reward-footer">
                         <img src={Game} />

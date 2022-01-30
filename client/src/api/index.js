@@ -8,7 +8,7 @@ export const insertChild = payload => api.post(`/child`, payload)
 export const deleteChildById = id => api.delete(`/child/${id}`)
 export const getChildById = id => api.get(`/child/${id}`)
 export const getAllChildren = () => api.get(`/children`)
-
+export const updateChildCoins = payload => api.put(`child`, payload)
 export const getRewards = () => api.get(`/rewards`)
 // need "reward", "child"
 export const createRewardRequest = payload => api.post(`/reward-request`, payload)
@@ -18,6 +18,7 @@ const apis = {
     deleteChildById,
     getChildById,
     getAllChildren,
+    updateChildCoins,
     getRewards,
     createRewardRequest
 }

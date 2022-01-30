@@ -10,14 +10,13 @@ import {
     Clock,
 } from "../svg";
 import { Link } from "react-router-dom";
-import apis from "../../api";
+import apis from '../../api'
 
 const { Component } = require("react");
 
 class ParentTasks extends Component {
     constructor() {
         super();
-
         this.state = {
             tasks: [],
             children: [],
@@ -55,6 +54,7 @@ class ParentTasks extends Component {
                 <div className="parent-task-card">
                     <h4>{task.name}</h4>
                     <p>{task.description}</p>
+
                     <div className="task-footer">
                         <div className="task-time">
                             <img src={Clock} />

@@ -15,6 +15,9 @@ export const getAllRewards = () => api.get('/rewards')
 export const deleteTaskById = id => api.delete(`/task/${id}`)
 export const deleteRewardById = id => api.delete(`/reward/${id}`)
 
+export const getChildTasks = child => api.get(`/tasks/${child}`)
+export const deleteTask = id => api.delete(`/task/${id}`)
+
 const apis = {
     insertChild,
     deleteChildById,
@@ -26,6 +29,8 @@ const apis = {
     getAllRewards,
     deleteRewardById,
     deleteTaskById,
+    getChildTasks,
+    deleteTask
 }
 
 export default apis

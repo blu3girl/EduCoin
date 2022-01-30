@@ -33,6 +33,7 @@ class ParentRewards extends Component {
             this.setState({ rewards: res.data.data })
         );
     }
+    
 
     render() {
         const { rewards } = this.state;

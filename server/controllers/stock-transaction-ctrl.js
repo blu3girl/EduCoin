@@ -85,10 +85,10 @@ getSharesByStock = async (req, res) => {
 
         if (!stockTransactions) {
             return res
-                .status(404)
-                .json({ success: false, error: `StockTransaction not found` })
+                .status(200)
+                .json({ success: true, data: {shares: 0} })
         }
-        var total = 0
+        let total = 0
         stockTransactions.forEach((stock) => {
             if (stock.action == "bought") {
                 total += stock.shares

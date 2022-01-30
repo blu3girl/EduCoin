@@ -1,14 +1,18 @@
 import "../../stylesheets/child/home.css";
 import { ArrowUp, Coin, Lion, Stock, TaskList, Gift, Investment } from "../svg";
 import { Link } from "react-router-dom";
+import { getChildById } from '../../api'
 
 const { Component } = require("react");
 
 class Home extends Component {
     constructor() {
         super();
+        this.state = {
+            child: getChildById("61f621d3bf24162200bfb993")
+        }
+        console.log(this.state.child)
     }
-
     render() {
         return (
             <div className="main-container">
@@ -17,7 +21,7 @@ class Home extends Component {
                     <div className="profile">
                         <img src={Lion} />
                         <h4>Good morning</h4>
-                        <h4 style={{ color: "var(--main3)" }}> ☀️Reo☀️ </h4>
+                        <h4 style={{ color: "var(--main3)" }}> {this.state.child[data][data][name]} </h4>
 
                         <div className="profile-card">
                             <h4>Your Progress</h4>

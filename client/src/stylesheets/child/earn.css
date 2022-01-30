@@ -92,6 +92,7 @@
     display: flex;
     width: fit-content;
     align-items: center;
+    margin-left: 10px;
     gap: .4em;
 }
 
@@ -160,13 +161,6 @@
     font-size: 1.75em;
 }
 
-.task-time, .task-cost {
-    display: flex;
-    width: fit-content;
-    align-items: right;
-    gap: .4em;
-}
-
 .main-container h3 {
     margin-block: .5em;
 }
@@ -204,6 +198,12 @@
 
     height: clamp(500px, 40vw, 50vh);
     overflow: scroll;
+}
+
+.complete {
+    margin-right: 10px;
+    color: var(--success);
+    background-color: transparent!important;
 }
 
 .list li {

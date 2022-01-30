@@ -26,6 +26,8 @@ export const getRewards = () => api.get(`/rewards`)
 // need "reward", "child"
 export const createRewardRequest = payload => api.post(`/reward-request`, payload)
 
+export const completeTask = (id) => api.put(`/task/${id}/complete`)
+
 const apis = {
     insertChild,
     deleteChildById,
@@ -43,7 +45,8 @@ const apis = {
     getChildTasks,
     deleteTask,
     getStocks,
-    getShares
+    getShares,
+    completeTask
 }
 
 export default apis

@@ -34,7 +34,11 @@ class Earn extends Component {
                             <span>{task.coins}</span>
                         </div>
                         <div className="task-buttons">
-                            <button id="edit">Complete</button>
+                            <button id="edit" class="complete" onClick={async () => {
+                                    await apis.completeTask(task._id);
+                                    window.location.reload();
+                                    // this.getTasks();
+                                }}>Complete</button>
                         </div>
                     </div>
                 </li>)

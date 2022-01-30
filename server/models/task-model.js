@@ -7,7 +7,7 @@ const Task = new Schema(
         description: { type: String },
         coins: { type: Number, required: true },
         status: { type: String, required: true },
-        child_name: { type: String, required: true },
+        child: { type: Schema.Types.ObjectId, required: true },
     },
     { timestamps: true },
 )

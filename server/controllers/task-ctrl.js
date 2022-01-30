@@ -64,7 +64,7 @@ getTasks = async (req, res) => {
 }
 
 getChildTasks = async (req, res) => {
-    await Task.find({ child_name: req.params.child }, (err, tasks) => {
+    await Task.find({ child: req.params.child }, (err, tasks) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -107,7 +107,7 @@ updateTaskStatus = async (req, res) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Movie not found!',
+                message: 'Task not found!',
             })
         }
 

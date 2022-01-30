@@ -1,4 +1,4 @@
-const StockTransaction = require('../models/stock-transaction')
+const StockTransaction = require('../models/stock-transaction-model')
 
 createStockTransaction = (req, res) => {
     const body = req.body
@@ -48,7 +48,7 @@ getStockTransactions = async (req, res) => {
 }
 
 getStockTransactionsByChild = async (req, res) => {
-    await StockTransaction.findOne({ child: req.params.child }, (err, stockTransactions) => {
+    await StockTransaction.find({ child: req.params.child }, (err, stockTransactions) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -63,7 +63,7 @@ getStockTransactionsByChild = async (req, res) => {
 }
 
 getStockTransactionsByChildAndStock = async (req, res) => {
-    await StockTransaction.findOne({ child: req.params.child, stock: req.params.stock }, (err, stockTransactions) => {
+    await StockTransaction.find({ child: req.params.child, stock: req.params.stock }, (err, stockTransactions) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

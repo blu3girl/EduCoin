@@ -9,13 +9,17 @@ class Earn extends Component {
     constructor() {
         super();
         this.state = {
-            tasks: []
+            tasks: [],
+            coins: 500
         }
     }
 
     componentDidMount = async () => {
         await apis.getChildTasks("61f621d3bf24162200bfb993")
                 .then((res) => this.setState({tasks: res.data.data}))
+                .catch((err) => console.log(err))
+        await apis.getChildById("61f621d3bf24162200bfb993")
+                .then((res) => this.setState({coins: res.data.data.coins}))
                 .catch((err) => console.log(err))
     }
 
@@ -36,15 +40,22 @@ class Earn extends Component {
                         <div className="task-buttons">
                             <button id="edit" class="complete" onClick={async () => {
                                     await apis.completeTask(task._id);
+                                    await apis.updateChildCoins({id:"61f621d3bf24162200bfb993", coins: task.coins})
                                     window.location.reload();
-                                    // this.getTasks();
                                 }}>Complete</button>
                         </div>
                     </div>
                 </li>)
             }
             else if (task.status == "completed") {
-                pending.push(<li>{task.name}-{task.coins}</li>)
+                pending.push(<li>{task.name}
+                    <div className="task-footer">
+                            <div className="task-cost">
+                                <img src={Coin} />
+                                <span class="green">{task.coins}</span>
+                            </div>
+                        </div>
+                    </li>)
             }
             else if (task.status == "accepted") {
                 completed.push(<li>{task.name}-{task.coins}</li>)
@@ -54,7 +65,7 @@ class Earn extends Component {
         <div className="main-container">
             <Link to='/'><h4 className="title">EduCoin</h4></Link>
             <div className='stat'>
-                <img src={Coin}/><h4>500</h4>
+                <img src={Coin}/><h4>{this.state.coins}</h4>
                 <img src={Stock}/><h4>+50</h4>
             </div>
             <h3 style={{color: 'var(--main2)'}}>Earn Coins</h3>

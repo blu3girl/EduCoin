@@ -92,7 +92,7 @@
     display: flex;
     width: fit-content;
     align-items: center;
-    margin-left: 10px;
+    margin-left: 30px;
     gap: .4em;
 }
 
@@ -202,8 +202,12 @@
 
 .complete {
     margin-right: 10px;
-    color: var(--success);
+    color: var(--main3);
     background-color: transparent!important;
+}
+
+.green {
+    color: var(--success);
 }
 
 .list li {

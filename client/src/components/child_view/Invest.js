@@ -1,4 +1,4 @@
-import "../../stylesheets/child/rewards.css";
+import "../../stylesheets/child/invest.css";
 import {
     ArrowUp,
     Coin,
@@ -9,6 +9,9 @@ import {
     Investment,
     Game,
 } from "../svg";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faApple } from '@fortawesome/free-brands-svg-icons'
 
 const { Component } = require("react");
 
@@ -22,16 +25,7 @@ class Invest extends Component {
 
         for (var i = 0; i < 10; ++i) {
             stuff.push(
-                <div className="reward-container">
-                    <h4 id={"content"}>30 minutes on xbox</h4>
-                    <div className="reward-footer">
-                        <img src={Game} />
-                        <div>
-                            <img src={Coin} />
-                            <h4>250</h4>
-                        </div>
-                    </div>
-                </div>
+                <li key={i}><FontAwesomeIcon icon={faApple} /><h4>Google</h4><h4 className="net">+0.5</h4></li>
             );
         }
 
@@ -45,8 +39,29 @@ class Invest extends Component {
                     <h4>+50</h4>
                 </div>
                 <h3 style={{ color: "var(--main2)" }}>Invest Coins</h3>
-                <h4 style={{ textAlign: "center" }}>Rewards</h4>
-                <div className="rewards-container">{}</div>
+                <div className="invest-sub-container">
+                    <div className="companies">
+                        <h4>Companies</h4>
+                        <ul>
+                            {stuff}
+                        </ul>
+                    </div>
+                    <div className="company-info">
+                        <h4>Google</h4>
+                        <div className="graph">
+                        
+                        </div>
+                        <div className="company-bio">
+                            <h4>Own:100</h4>
+                            <h4>Buy Price:100</h4>
+                            <h4>Current Price:100</h4>
+                        </div>
+                        <div className="invest-buttons">
+                            <button id="buy"><h4>Buy</h4></button>
+                            <button id="sell"><h4>Sell</h4></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

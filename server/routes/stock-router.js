@@ -4,9 +4,9 @@ const StockCtrl = require('../controllers/stock-ctrl')
 
 const router = express.Router()
 
-router.post('/stock', StockCtrl.createStock)
-router.delete('/stock/:id', StockCtrl.deleteStock)
-router.get('/stock/:id', StockCtrl.getStockById)
-router.get('/stocks', StockCtrl.getStocks)
+router.post('/stock', StockCtrl.createStock)            // create a stock
+router.delete('/stock/:id', StockCtrl.deleteStock)      // delete a stock
+router.get('/stock/:id', StockCtrl.getStockById)        // get stock by id
+router.get('/stocks', StockCtrl.getStocks)              // show all stocks
 
 module.exports = router

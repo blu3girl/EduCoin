@@ -7,7 +7,7 @@ const Transaction = new Schema(
         type: { type: String, required: true },
         reward: { type: Schema.Types.ObjectId },
         task: { type: Schema.Types.ObjectId },
-        deduction: { type: Schema.Types.ObjectId }
+        override: { type: Schema.Types.ObjectId }
     },
     { timestamps: true },
 )

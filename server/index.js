@@ -8,6 +8,7 @@ const childRouter = require('./routes/child-router')
 const rewardRouter = require('./routes/reward-router')
 const rewardRequestRouter = require('./routes/reward-request-router')
 const transactionRouter = require('./routes/transaction-router')
+const overrideRouter = require('./routes/override-router')
 
 const app = express()
 const apiPort = 3001
@@ -27,5 +28,6 @@ app.use('/api', childRouter)
 app.use('/api', rewardRouter)
 app.use('/api', rewardRequestRouter)
 app.use('/api', transactionRouter)
+app.use('/api', overrideRouter)
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))

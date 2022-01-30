@@ -10,13 +10,16 @@ export const getChildById = id => api.get(`/child/${id}`)
 export const getAllChildren = () => api.get(`/children`)
 
 export const getRewards = () => api.get(`/rewards`)
+// need "reward", "child"
+export const createRewardRequest = payload => api.post(`/reward-request`, payload)
 
 const apis = {
     insertChild,
     deleteChildById,
     getChildById,
     getAllChildren,
-    getRewards
+    getRewards,
+    createRewardRequest
 }
 
 export default apis

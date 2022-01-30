@@ -43,9 +43,11 @@ class Rewards extends Component {
             return { uhhh };                                 
           })
         // this.setState({...this.state.child, this.state.child.coins -= rewardscoins});
-        // await apis.updateChildCoins(this.state.child)
-        //     .then((res) => console.log(res))
-        //     .catch((err) => console.log(err))
+        const p = {id:this.state.child._id, coins:-rewardscoins}
+        console.log('dKLADLAMLK',p)
+        await apis.updateChildCoins(p)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
 
         console.log(this.state.child)
     }

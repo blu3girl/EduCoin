@@ -114,7 +114,7 @@ getChildById = async (req, res) => {
                 .json({ success: false, error: `Child not found` })
         }
         return res.status(200).json({ success: true, data: child })
-    }).catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 module.exports = {

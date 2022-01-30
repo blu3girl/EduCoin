@@ -35,13 +35,13 @@ class Home extends Component {
                             <h4>Your Progress</h4>
                             <div>
                                 <img src={Coin} />
-                                <h4>500</h4>
+                                <h4>{child.coins}</h4>
                             </div>
                             <div>
                                 <img src={Stock} />
                                 <h4>+50</h4>
                             </div>
-                            <h4>Keep up the good work!</h4>
+                            <h4>{child.coins > 0 ? "Keep up the good work!" : "You can do better than that!"}</h4>
                         </div>
                     </div>
                     <div className="button-container">

@@ -40,7 +40,7 @@ class ParentRewards extends Component {
         const rewards = this.state.rewards
         var cards = [];
     
-        for (var i = 0; i < rewards.length; ++i) {
+        for (let i = 0; i < rewards.length; ++i) {
             cards.push(
                 <div className="parent-task-card reward">
                     <h4>{rewards[i].name}</h4>
@@ -59,10 +59,10 @@ class ParentRewards extends Component {
                                 onClick={async () => {
                                     if (
                                         window.confirm(
-                                            `Delete ${reward.name}?`
+                                            `Delete ${rewards[i].name}?`
                                         ) == true
                                     ) {
-                                        await apis.deleteRewardById(reward._id);
+                                        await apis.deleteRewardById(rewards[i]._id);
                                         this.getRewards();
                                     }
                                 }}
@@ -73,7 +73,7 @@ class ParentRewards extends Component {
                     </div>
                 </div>
             );
-        });
+        };
 
         if(cards.length === 0) {
             cards.push(

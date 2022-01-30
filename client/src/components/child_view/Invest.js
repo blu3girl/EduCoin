@@ -79,17 +79,23 @@ class Invest extends Component {
             else if (stocks[i].name == "Facebook") {
                 icon_render = <FontAwesomeIcon icon={faFacebook} />
             }
-            else if (stocks[i].name == "Gamestop") {
+            else if (stocks[i].name == "GameStop") {
                 icon_render = <img src={gamestop} alt="logo"/>
             }
             else if (stocks[i].name == "Tesla") {
                 icon_render = <img src={tesla} alt="logo"/>
             }
-            else if (stocks[i].name == "Cocacola") {
+            else if (stocks[i].name == "Coca-Cola") {
                 icon_render = <img src={cocacola} alt="logo"/>
+            }
+            else if (stocks[i].name == "McDonald's") {
+                icon_render = <img src={mcdonalds} alt="logo"/>
             }
             else if (stocks[i].name == "Nike") {
                 icon_render = <img src={nike} alt="logo"/>
+            }
+            else if (stocks[i].name == "Disney") {
+                icon_render = <img src={disney} alt="logo"/>
             }
             else if (stocks[i].name == "Netflix") {
                 icon_render = <img src={netflix} alt="logo"/>
@@ -119,7 +125,7 @@ class Invest extends Component {
                     <div className="company-info">
                         <h4>{current_stock.name}</h4>
                         <div className="graph">
-                        <APPLchart />
+                        <GOOGLchart />
                         </div>
                         <div className="company-bio">
                             <h4>Current Share Price: {Quotes(current_stock.ticker)}</h4>

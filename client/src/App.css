@@ -22,7 +22,7 @@
 
 body {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(10px, 1.3vw, 20px);
+  font-size: clamp(12px, 1.3vw, 20px);
 
   background-color: var(--bg);
   color: var(--text);

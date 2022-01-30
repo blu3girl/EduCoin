@@ -38,6 +38,7 @@ function netReturn(company) {
     }
 
 }
+<<<<<<< HEAD
 
 //APPL 170.33, 159.22
 //DIS 138.63, 135.42
@@ -50,4 +51,6 @@ function netReturn(company) {
 //TSLA  846.35, 829.1
 //NFLX 384.36, 386.7
 
+=======
+>>>>>>> f57fec47a53f95ab4fe461b42c6177148d7b4564
 export default netReturn;

@@ -17,34 +17,44 @@ const { Component } = require("react");
 class ParentTasks extends Component {
     constructor() {
         super();
-        this.handleDelete = this.handleDelete.bind(this)
         this.state = {
-            tasks: []
-        }
+            tasks: [],
+            children: [],
+            selectedChild: '',
+        };
     }
 
-    componentDidMount = async () => {
-        await apis.getChildTasks("61f621d3bf24162200bfb993")
-                .then((res) => this.setState({tasks: res.data.data}))
-                .catch((err) => console.log(err))
+    componentDidMount() {
+        this.getTasks();    
+        this.getChildren();
     }
 
-    handleDelete = (id) => {
-        console.log("oh no deleting")
-        console.log(id)
-        apis.deleteTask(id)
-        window.location.reload()  
+    getChildren() {
+        fetch("http://localhost:3001/api/children")
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ children: res.data, selectedChild: res.data[0]._id });
+            });
+    }
+
+    getTasks() {
+        apis.getAllTask().then((res) =>
+            this.setState({ tasks: res.data.data })
+        );
     }
 
     render() {
-        const tasks = this.state.tasks
+        const { tasks, children, selectedChild } = this.state;
+
         var cards = [];
 
-        for (let i = 0; i < tasks.length; i++) {
+        tasks.forEach((task) => {
+            if(task.child === selectedChild)
             cards.push(
                 <div className="parent-task-card">
-                    <h4>{tasks[i].name}</h4>
-                    <p>{tasks[i].description}</p>
+                    <h4>{task.name}</h4>
+                    <p>{task.description}</p>
+
                     <div className="task-footer">
                         <div className="task-time">
                             <img src={Clock} />
@@ -52,16 +62,52 @@ class ParentTasks extends Component {
                         </div>
                         <div className="task-cost">
                             <img src={Coin} />
-                            <span>{tasks[i].coins}</span>
+                            <span>{task.coins}</span>
                         </div>
                         <div className="task-buttons">
                             <button id="edit">Edit</button>
-                            <button id="delete" onClick={() => {this.handleDelete(tasks[i]._id);}}>Delete</button>
+                            <button
+                                id="delete"
+                                onClick={async () => {
+                                    if (
+                                        window.confirm(
+                                            `Delete ${task.name}?`
+                                        ) == true
+                                    ) {
+                                        await apis.deleteTaskById(task._id);
+                                        this.getTasks();
+                                    }
+                                }}
+                            >
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>
             );
+        });
+
+        console.log(cards.length)
+
+        if(cards.length === 0) {
+            cards.push(
+                <div className="parent-task-card">
+                    <h4>No Tasks Assigned!</h4>
+                    <p>Assign this child a new task!</p>
+                    <div className="task-footer">
+                        <div className="task-buttons">
+                        </div>
+                    </div>
+                </div>
+            )
         }
+
+        const childOpt = []
+        children.forEach(child => {
+            childOpt.push(
+                <option value={child._id}>{child.name}</option>
+            )
+        })
 
         return (
             <div className="parent-main-container">
@@ -88,18 +134,17 @@ class ParentTasks extends Component {
                 <div className="parent-task-sub-container">
                     <div className="child-selector">
                         <h4>Child:</h4>
-                        <select>
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option selected value="coconut">
-                                Coconut
-                            </option>
-                            <option value="mango">Mango</option>
+                        <select onChange={(e) => {
+                            this.setState({selectedChild: e.target.value})
+                        }}>
+                            {childOpt}
                         </select>
                     </div>
                     <div className="task-header">
                         <h4>Tasks:</h4>
-                        <button>Add</button>
+                        <Link to="/parent/tasks/create">
+                            <button>Add</button>
+                        </Link>
                     </div>
                     <div className="parent-task-card-container">{cards}</div>
                 </div>

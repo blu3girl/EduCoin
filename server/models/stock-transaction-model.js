@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const StockTransaction = new Schema(
     {
         child: { type: Schema.Types.ObjectId, required: true },
-        stock: { type: Schema.Types.ObjectId, required: true },
+        stock: { type: String, required: true },
         price: { type: Number, required: true },
         shares: { type: Number, required: true },
         action: { type: String, required: true }

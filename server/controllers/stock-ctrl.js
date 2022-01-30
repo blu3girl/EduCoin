@@ -63,8 +63,8 @@ getStocks = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getStockById = async (req, res) => {
-    await Stock.findOne({ _id: req.params.id }, (err, stock) => {
+getStockByName = async (req, res) => {
+    await Stock.findOne({ name: req.params.name }, (err, stock) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -82,5 +82,5 @@ module.exports = {
     createStock,
     deleteStock,
     getStocks,
-    getStockById,
+    getStockByName,
 }

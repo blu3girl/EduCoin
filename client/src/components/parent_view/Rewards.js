@@ -18,6 +18,7 @@ class ParentRewards extends Component {
     constructor() {
         super();
     }
+    
 
     render() {
         var cards = [];

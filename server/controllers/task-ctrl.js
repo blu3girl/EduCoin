@@ -10,6 +10,10 @@ createTask = (req, res) => {
         })
     }
 
+    if (!("status" in body)) {
+        body["status"] = "assigned"
+    }
+
     const task = new Task(body)
 
     if (!task) {
@@ -64,7 +68,23 @@ getTasks = async (req, res) => {
 }
 
 getChildTasks = async (req, res) => {
+    console.log("started")
     await Task.find({ child: req.params.child }, (err, tasks) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!tasks.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Task not found` })
+        }
+        console.log("started")
+        return res.status(200).json({ success: true, data: tasks })
+    }).clone().catch(err => console.log(err))
+}
+
+getChildCompletedTasks = async (req, res) => {
+    await Task.find({ child: req.params.child, status: "completed" }, (err, tasks) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

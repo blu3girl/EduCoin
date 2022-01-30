@@ -9,11 +9,16 @@ export const deleteChildById = id => api.delete(`/child/${id}`)
 export const getChildById = id => api.get(`/child/${id}`)
 export const getAllChildren = () => api.get(`/children`)
 
+export const getChildTasks = child => api.get(`/tasks/${child}`)
+export const deleteTask = id => api.delete(`/task/${id}`)
+
 const apis = {
     insertChild,
     deleteChildById,
     getChildById,
-    getAllChildren
+    getAllChildren,
+    getChildTasks,
+    deleteTask
 }
 
 export default apis

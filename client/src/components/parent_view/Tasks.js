@@ -10,25 +10,41 @@ import {
     Clock,
 } from "../svg";
 import { Link } from "react-router-dom";
+import apis from '../../api'
 
 const { Component } = require("react");
 
 class ParentTasks extends Component {
     constructor() {
         super();
+        this.handleDelete = this.handleDelete.bind(this)
+        this.state = {
+            tasks: []
+        }
+    }
+
+    componentDidMount = async () => {
+        await apis.getChildTasks("61f621d3bf24162200bfb993")
+                .then((res) => this.setState({tasks: res.data.data}))
+                .catch((err) => console.log(err))
+    }
+
+    handleDelete = (id) => {
+        console.log("oh no deleting")
+        console.log(id)
+        apis.deleteTask(id)
+        window.location.reload()  
     }
 
     render() {
+        const tasks = this.state.tasks
         var cards = [];
 
-        for (var i = 0; i < 10; ++i) {
+        for (let i = 0; i < tasks.length; i++) {
             cards.push(
                 <div className="parent-task-card">
-                    <h4>Wash the dog</h4>
-                    <p>
-                        Wash the dog with shampoo and conditioner and also feed
-                        the dog.
-                    </p>
+                    <h4>{tasks[i].name}</h4>
+                    <p>{tasks[i].description}</p>
                     <div className="task-footer">
                         <div className="task-time">
                             <img src={Clock} />
@@ -36,11 +52,11 @@ class ParentTasks extends Component {
                         </div>
                         <div className="task-cost">
                             <img src={Coin} />
-                            <span>500</span>
+                            <span>{tasks[i].coins}</span>
                         </div>
                         <div className="task-buttons">
                             <button id="edit">Edit</button>
-                            <button id="delete">Delete</button>
+                            <button id="delete" onClick={() => {this.handleDelete(tasks[i]._id);}}>Delete</button>
                         </div>
                     </div>
                 </div>

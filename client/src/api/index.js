@@ -28,6 +28,8 @@ export const createRewardRequest = payload => api.post(`/reward-request`, payloa
 
 export const completeTask = (id) => api.put(`/task/${id}/complete`)
 
+export const newStockTransaction = payload => api.post(`/stock-transaction`, payload)
+
 const apis = {
     insertChild,
     deleteChildById,
@@ -46,7 +48,8 @@ const apis = {
     deleteTask,
     getStocks,
     getShares,
-    completeTask
+    completeTask,
+    newStockTransaction
 }
 
 export default apis

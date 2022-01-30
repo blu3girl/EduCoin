@@ -61,6 +61,10 @@
     color: var(--error);
 }
 
+h4 span{
+    font-weight: normal;
+}
+
 .company-info {
     display: flex;
     flex-direction: column;
@@ -123,4 +127,9 @@
 .invest-buttons #sell {
     background-color: var(--sub_error);
     border: var(--error) 6px solid;
+}
+
+form {
+    margin: 10px;
+    font-size: 1.5em;
 }

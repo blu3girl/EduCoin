@@ -1,2 +1,3 @@
 server/db/index.js
 server/node_modules
+node_modules/

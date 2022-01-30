@@ -73,7 +73,7 @@ class ParentRewards extends Component {
                     </div>
                 </div>
             );
-        };
+        }
 
         if(cards.length === 0) {
             cards.push(

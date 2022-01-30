@@ -46,11 +46,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     width: 100%;
     box-sizing: border-box;
     /* max-width: max-content; */
     height: fit-content;
+
+    transition: all .2s ease-in-out;
+}
+
+.companies li:hover {
+    cursor: pointer;
+    filter: brightness(0.95);
+    transform: scale(0.98);
 }
 
 .companies h4.positive {

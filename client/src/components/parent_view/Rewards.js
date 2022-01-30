@@ -32,8 +32,8 @@ class ParentRewards extends Component {
     render() {
         const rewards = this.state.rewards
         var cards = [];
-
-        for (var i = 0; i < rewards.size; ++i) {
+    
+        for (var i = 0; i < rewards.length; ++i) {
             cards.push(
                 <div className="parent-task-card reward">
                     <h4>{rewards[i].name}</h4>

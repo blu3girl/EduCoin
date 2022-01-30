@@ -11,28 +11,39 @@ import {
     WhiteGame,
 } from "../svg";
 import { Link } from "react-router-dom";
+import apis from '../../api'
 
 const { Component } = require("react");
 
 class ParentRewards extends Component {
     constructor() {
         super();
+        this.state = {
+            rewards: []
+        }
+    }
+
+    componentDidMount = async () => {
+        await apis.getRewards()
+                  .then((res) => this.setState({rewards: res.data.data}))
+                  .catch((err) => console.log(err))
     }
 
     render() {
+        const rewards = this.state.rewards
         var cards = [];
 
-        for (var i = 0; i < 10; ++i) {
+        for (var i = 0; i < rewards.size; ++i) {
             cards.push(
                 <div className="parent-task-card reward">
-                    <h4>Wash the dog</h4>
+                    <h4>{rewards[i].name}</h4>
                     <div className="task-footer reward">
                         <div className="task-time">
                             <img src={WhiteGame} />
                         </div>
                         <div className="task-cost">
                             <img src={Coin} />
-                            <span>250</span>
+                            <span>{rewards[i].coins}</span>
                         </div>
                         <div className="task-buttons">
                             <button id="edit">Edit</button>

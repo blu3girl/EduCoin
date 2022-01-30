@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+:root {
+  --bg: #FEF2E6;
+  --darkbg: #FFE8D1;
+  --text:  #000;
+  --lighttext: #fff;
+  --main1: #18C8FF;
+  --main2: #7B60ED;
+  --main2-shadow: #5D48B2;
+  --main3: #FEA725;
+  --sub1: #D0F4FF;
+  --sub2: #F0ECFF;
+  --sub3: #FFE8D1;
+  --error: #FF7070;
+  --sub_error: #FFCCCC;
+  --success: #04C600;
+  --sub_success: #CAFFC9;
+   
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(10px, 1.3vw, 20px);
+
+  background-color: var(--bg);
+  color: var(--text);
+
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  font-family: 'Fredoka One', cursive;
+  font-size: inherit;
+
+  outline: none;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a {
+  text-decoration: none;  
 }
 
-.App-link {
-  color: #61dafb;
+h1, h2, h3, h4 {
+  margin: 0;
+  display: inline-block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h3 {
+  font-size: 2.7em;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+img {
+  max-width: 500px;
+}
+
+ul {
+  list-style: none;
 }

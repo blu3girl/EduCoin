@@ -1,15 +1,62 @@
 import "../../stylesheets/parent/home.css";
 import { ArrowUp, Coin, Lion, Stock, TaskList, Gift, Investment } from "../svg";
 import { Link } from "react-router-dom";
+import apis from "../../api";
 
 const { Component } = require("react");
 
 class ParentHome extends Component {
     constructor() {
         super();
+
+        this.state = {
+            children: [],
+        };
+    }
+
+    componentDidMount() {
+        this.getChildren();
+    }
+
+    getChildren() {
+        fetch("http://localhost:3001/api/children")
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ children: res.data });
+            });
     }
 
     render() {
+        const { children } = this.state;
+        const childrenArr = [];
+
+        children.forEach((child) => {
+            childrenArr.push(
+                <div className="child-card">
+                    <h4>{child.name}</h4>
+                    <img src={Lion} />
+                    <div className="child-coin">
+                        <img src={Coin} />
+                        <span>Coins: {child.coins}</span>
+                    </div>
+                    <div className="child-buttons">
+                        <button>View Log</button>
+                        <button
+                            id="delete"
+                            onClick={async () => {
+                                if (window.confirm(`Delete ${child.name}?`) == true) {
+                                    await apis.deleteChildById(child._id);
+                                    this.getChildren();
+                                }
+                            }}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            );
+        });
+
         return (
             <div className="parent-main-container">
                 <div className="navbar">
@@ -34,34 +81,11 @@ class ParentHome extends Component {
 
                 <div className="parent-sub-container">
                     <h4>Your Children</h4>
-                    <div className="child-card-container">
-                        <div className="child-card">
-                            <h4>Reo Matsuda</h4>
-                            <img src={Lion} />
-                            <div className="child-coin">
-                                <img src={Coin} />
-                                <span>Coins: 1000</span>
-                            </div>
-                            <div className="child-buttons">
-                                <button>View Log</button>
-                                <button>Edit</button>
-                            </div>
-                        </div>
-                        <div className="child-card">
-                            <h4>Paul Hinh</h4>
-                            <img src={Lion} />
-                            <div className="child-coin">
-                                <img src={Coin} />
-                                <span>Coins: 10</span>
-                            </div>
-                            <div className="child-buttons">
-                                <button>View Log</button>
-                                <button>Edit</button>
-                            </div>
-                        </div>
-                    </div>
+                    <div className="child-card-container">{childrenArr}</div>
                     <h4>Add new child</h4>
-                    <button id="addChild">+</button>
+                    <Link to="/parent/child/create">
+                        <button id="addChild">+</button>
+                    </Link>
                 </div>
             </div>
         );

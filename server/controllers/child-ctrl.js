@@ -59,7 +59,7 @@ updateChildCoins = (req, res) => {
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: child._id,
+                    data: child,
                     message: 'Child updated!',
                 })
             })

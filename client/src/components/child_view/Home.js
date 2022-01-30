@@ -21,7 +21,7 @@ class Home extends Component {
     }
 
     render() {
-        const child = this.state.child.name
+        const child = this.state.child
         return (
             <div className="main-container">
                 <Link to='/'><h4 className="title">EduCoin</h4></Link>
@@ -29,7 +29,7 @@ class Home extends Component {
                     <div className="profile">
                         <img src={Lion} />
                         <h4>Good morning</h4>
-                        <h4 style={{ color: "var(--main3)" }}> {child}</h4>
+                        <h4 style={{ color: "var(--main3)" }}> {child.name}</h4>
 
                         <div className="profile-card">
                             <h4>Your Progress</h4>

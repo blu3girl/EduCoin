@@ -11,21 +11,22 @@ import {
     WhiteGame,
 } from "../svg";
 import { Link } from "react-router-dom";
-import apis from "../../api";
+import apis from '../../api'
 
 const { Component } = require("react");
 
 class ParentRewards extends Component {
     constructor() {
         super();
-
         this.state = {
-            rewards: [],
-        };
+            rewards: []
+        }
     }
 
-    componentDidMount() {
-        this.getRewards();
+    componentDidMount = async () => {
+        await apis.getRewards()
+                  .then((res) => this.setState({rewards: res.data.data}))
+                  .catch((err) => console.log(err))
     }
 
     getRewards() {
@@ -36,21 +37,20 @@ class ParentRewards extends Component {
     
 
     render() {
-        const { rewards } = this.state;
-
+        const rewards = this.state.rewards
         var cards = [];
-
-        rewards.forEach((reward) => {
+    
+        for (var i = 0; i < rewards.length; ++i) {
             cards.push(
                 <div className="parent-task-card reward">
-                    <h4>{reward.name}</h4>
+                    <h4>{rewards[i].name}</h4>
                     <div className="task-footer reward">
                         <div className="task-time">
                             <img src={WhiteGame} />
                         </div>
                         <div className="task-cost">
                             <img src={Coin} />
-                            <span>{reward.coins}</span>
+                            <span>{rewards[i].coins}</span>
                         </div>
                         <div className="task-buttons">
                             <button id="edit">Edit</button>

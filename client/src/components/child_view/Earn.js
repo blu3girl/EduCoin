@@ -27,7 +27,17 @@ class Earn extends Component {
         const completed = []
         tasks.forEach(task => {
             if (task.status == "assigned") {
-                to_do.push(<li>{task.name}-{task.coins}</li>)
+                to_do.push(<li>{task.name}
+                <div className="task-footer">
+                        <div className="task-cost">
+                            <img src={Coin} />
+                            <span>{task.coins}</span>
+                        </div>
+                        <div className="task-buttons">
+                            <button id="edit">Complete</button>
+                        </div>
+                    </div>
+                </li>)
             }
             else if (task.status == "completed") {
                 pending.push(<li>{task.name}-{task.coins}</li>)

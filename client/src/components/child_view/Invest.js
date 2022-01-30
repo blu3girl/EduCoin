@@ -59,51 +59,74 @@ class Invest extends Component {
         console.log(this.state.current_shares)
     }
 
+    handleChangeStock = async (i) => {
+        
+        const getStocks = await apis.getStocks()
+        this.setState({current_stock: getStocks.data.data[i]})
+        const getShares = await apis.getShares("61f621d3bf24162200bfb993", getStocks.data.data[i].ticker) 
+        this.setState({current_shares: getShares.data.data.shares})
+        console.log(this.state.child)
+        // window.location.reload()
+    }
+
     render() {
         const stocks = this.state.stocks
         const current_stock = this.state.current_stock
         const current_shares = this.state.current_shares
         const stocks_render = [];
+        let chart = <GOOGLchart />
 
         for (let i = 0; i < stocks.length; ++i) {
             let icon_render = <FontAwesomeIcon icon={faApple} />
             if (stocks[i].name == "Apple") {
                 icon_render = <FontAwesomeIcon icon={faApple} />
+                chart = <APPLchart />
             }
             else if (stocks[i].name == "Google") {
                 icon_render = <FontAwesomeIcon icon={faGoogle} />
+                chart = <GOOGLchart />
             }
             else if (stocks[i].name == "Amazon") {
                 icon_render = <FontAwesomeIcon icon={faAmazon} />
             }
             else if (stocks[i].name == "Facebook") {
                 icon_render = <FontAwesomeIcon icon={faFacebook} />
-            }
-            else if (stocks[i].name == "GameStop") {
-                icon_render = <img src={gamestop} alt="logo"/>
+                chart = <FBchart />
             }
             else if (stocks[i].name == "Tesla") {
                 icon_render = <img src={tesla} alt="logo"/>
+                chart = <TSLAchart />
+            }
+            else if (stocks[i].name == "GameStop") {
+                icon_render = <p>GME</p>
+                chart = <GMEchart />
             }
             else if (stocks[i].name == "Coca-Cola") {
                 icon_render = <img src={cocacola} alt="logo"/>
+                chart = <KOchart />
             }
             else if (stocks[i].name == "McDonald's") {
                 icon_render = <img src={mcdonalds} alt="logo"/>
+                chart = <MCDchart />
             }
             else if (stocks[i].name == "Nike") {
                 icon_render = <img src={nike} alt="logo"/>
+                chart = <NKEchart />
             }
             else if (stocks[i].name == "Disney") {
                 icon_render = <img src={disney} alt="logo"/>
+                chart = <DISchart />
             }
             else if (stocks[i].name == "Netflix") {
                 icon_render = <img src={netflix} alt="logo"/>
+                chart = <NFLXchart />
             }
             stocks_render.push(
-                <li key={i}>{icon_render}<h4>{stocks[i].name}</h4><h4 className={(NetReturn(stocks[i].ticker) < 0) ? "negative" : "positive"}>{(NetReturn(stocks[i].ticker) > 0) ? "+" : ""}{Math.round(NetReturn(stocks[i].ticker) * 100) / 100}</h4></li>
+                <li onClick={() => {this.handleChangeStock(i)}} key={i}>{icon_render}<h4>{stocks[i].name}</h4><h4 className={(NetReturn(stocks[i].ticker) < 0) ? "negative" : "positive"}>{(NetReturn(stocks[i].ticker) > 0) ? "+" : ""}{Math.round(NetReturn(stocks[i].ticker) * 100) / 100}</h4></li>
             );
         }
+
+            
 
         return (
             <div className="main-container">
@@ -125,7 +148,7 @@ class Invest extends Component {
                     <div className="company-info">
                         <h4>{current_stock.name}</h4>
                         <div className="graph">
-                        <GOOGLchart />
+                            {chart} 
                         </div>
                         <div className="company-bio">
                             <h4>Current Share Price: {Quotes(current_stock.ticker)}</h4>

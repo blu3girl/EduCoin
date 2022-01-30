@@ -12,6 +12,16 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faApple } from '@fortawesome/free-brands-svg-icons'
+import GOOGLchart from "../../functions/GOOGLchart";
+import APPLchart from "../../functions/APPLchart";
+import DISchart from "../../functions/DISchart";
+import FBchart from "../../functions/FBchart";
+import GMEchart from "../../functions/GMEchart";
+import KOchart from "../../functions/KOchart";
+import MCDchart from "../../functions/MCDchart";
+import NFLXchart from "../../functions/NFLXchart";
+import NKEchart from "../../functions/NKEchart";
+import TSLAchart from "../../functions/TSLAchart";
 
 const { Component } = require("react");
 
@@ -49,7 +59,7 @@ class Invest extends Component {
                     <div className="company-info">
                         <h4>Google</h4>
                         <div className="graph">
-                        
+                        <APPLchart />
                         </div>
                         <div className="company-bio">
                             <h4>Own:100</h4>

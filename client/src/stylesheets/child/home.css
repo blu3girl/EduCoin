@@ -52,6 +52,18 @@
     gap: 1.25em;
 }
 
+a {
+    color: var(--text);
+    width: fit-content;
+
+    transition: color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+a:hover {
+    color: #666;
+    transform: scale(1.05);
+}
+
 .profile-card div {
     display: flex;
     flex-direction: row;
@@ -100,7 +112,7 @@
 .button-container button:hover {
     cursor: pointer;
     filter: brightness(.9);
-    transform: scale(0.95);
+    transform: scale(0.92);
 }
 
 .button-container button#earn {

@@ -29,6 +29,13 @@ class ParentRewards extends Component {
                   .catch((err) => console.log(err))
     }
 
+    getRewards() {
+        apis.getAllRewards().then((res) =>
+            this.setState({ rewards: res.data.data })
+        );
+    }
+    
+
     render() {
         const rewards = this.state.rewards
         var cards = [];
@@ -47,11 +54,37 @@ class ParentRewards extends Component {
                         </div>
                         <div className="task-buttons">
                             <button id="edit">Edit</button>
-                            <button id="delete">Delete</button>
+                            <button
+                                id="delete"
+                                onClick={async () => {
+                                    if (
+                                        window.confirm(
+                                            `Delete ${reward.name}?`
+                                        ) == true
+                                    ) {
+                                        await apis.deleteRewardById(reward._id);
+                                        this.getRewards();
+                                    }
+                                }}
+                            >
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>
             );
+        });
+
+        if(cards.length === 0) {
+            cards.push(
+                <div className="parent-task-card reward">
+                    <h4>No rewards assinged!</h4>
+                    <div className="task-footer reward">
+                        <div className="task-buttons">
+                        </div>
+                    </div>
+                </div>
+            )
         }
 
         return (
@@ -77,20 +110,11 @@ class ParentRewards extends Component {
                 </div>
 
                 <div className="parent-task-sub-container">
-                    <div className="child-selector">
-                        <h4>Child:</h4>
-                        <select>
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option selected value="coconut">
-                                Coconut
-                            </option>
-                            <option value="mango">Mango</option>
-                        </select>
-                    </div>
                     <div className="task-header">
-                    <h4>Rewards:</h4>
-                    <button>Add</button>
+                        <h4>Rewards:</h4>
+                        <Link to="/parent/rewards/create">
+                            <button>Add</button>
+                        </Link>
                     </div>
                     <div className="parent-task-card-container">{cards}</div>
                 </div>

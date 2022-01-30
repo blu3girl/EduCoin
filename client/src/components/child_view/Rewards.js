@@ -10,6 +10,7 @@ import {
     Game,
 } from "../svg";
 import apis from '../../api'
+import { Link } from 'react-router-dom'
 
 const { Component } = require("react");
 class Rewards extends Component {
@@ -65,7 +66,7 @@ class Rewards extends Component {
 
         return (
             <div className="main-container">
-                <h4 className="title">EduCoin</h4>
+                <Link to='/'><h4 className="title">EduCoin</h4></Link>
                 <div className="stat">
                     <img src={Coin} />
                     <h4>{child.coins}</h4>

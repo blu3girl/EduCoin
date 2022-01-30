@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import apis from '../../api'
 import axios from 'axios'
 
-
 const { Component } = require("react");
 
 class Home extends Component {
@@ -25,7 +24,7 @@ class Home extends Component {
         const child = this.state.child
         return (
             <div className="main-container">
-                <h4 className="title">EduCoin</h4>
+                <Link to='/'><h4 className="title">EduCoin</h4></Link>
                 <div className="sub-container">
                     <div className="profile">
                         <img src={Lion} />

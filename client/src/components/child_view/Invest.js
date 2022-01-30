@@ -22,6 +22,8 @@ import MCDchart from "../../functions/MCDchart";
 import NFLXchart from "../../functions/NFLXchart";
 import NKEchart from "../../functions/NKEchart";
 import TSLAchart from "../../functions/TSLAchart";
+import { Link } from 'react-router-dom'
+
 
 import netflix from "../../assets/netflix.svg";
 import nike from "../../assets/nike.svg";
@@ -99,7 +101,7 @@ class Invest extends Component {
 
         return (
             <div className="main-container">
-                <h4 className="title">EduCoin</h4>
+                <Link to='/'><h4 className="title">EduCoin</h4></Link>
                 <div className="stat">
                     <img src={Coin} />
                     <h4>500</h4>

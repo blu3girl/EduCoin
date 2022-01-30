@@ -12,13 +12,19 @@ export const getAllChildren = () => api.get(`/children`)
 export const getChildTasks = child => api.get(`/tasks/${child}`)
 export const deleteTask = id => api.delete(`/task/${id}`)
 
+export const getStocks = () => api.get(`/stocks`)
+
+export const getShares = (child, stock) => api.get(`/shares/${child}/${stock}`)
+
 const apis = {
     insertChild,
     deleteChildById,
     getChildById,
     getAllChildren,
     getChildTasks,
-    deleteTask
+    deleteTask,
+    getStocks,
+    getShares
 }
 
 export default apis

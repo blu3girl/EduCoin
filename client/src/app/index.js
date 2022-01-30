@@ -26,6 +26,7 @@ function App() {
       <Route path="/use" element={<Rewards/>} />
       <Route path="/earn" element={<Earn/>} />
       <Route path="/invest" element={<Invest/>} />
+      <Route path="/invest" element={<Invest/>} />
       <Route path="/parent" element={<ParentHome/>} />
       <Route path="/parent/tasks" element={<ParentTasks/>} />
       <Route path="/parent/rewards" element={<ParentRewards/>} />
